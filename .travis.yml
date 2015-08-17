@@ -1,0 +1,54 @@
+# This file is part of Flask-CeleryExt
+# Copyright (C) 2015 CERN.
+#
+# Flask-CeleryExt is free software; you can redistribute it and/or modify it
+# under the terms of the Revised BSD License; see LICENSE file for more
+# details.
+
+
+sudo: false
+
+language: python
+
+python:
+  - "2.6"
+  - "2.7"
+  - "3.3"
+  - "3.4"
+
+env:
+  - REQUIREMENTS=lowest
+  - REQUIREMENTS=latest
+  - REQUIREMENTS=devel
+
+cache:
+  - pip
+
+install:
+  - "travis_retry pip install coveralls Sphinx"
+  - "travis_retry pip install pytest pytest-cov pytest-cache"
+  - "if test -e requirements.${REQUIREMENTS}.${TRAVIS_PYTHON_VERSION}.txt; then REQ=${REQUIREMENTS}.${TRAVIS_PYTHON_VERSION}; else REQ=${REQUIREMENTS}; fi;"
+  - "travis_retry pip install -r requirements.${REQ}.txt"
+  - "travis_retry pip install -e ."
+
+script:
+  - "sphinx-build -qnNW docs docs/_build/html"
+  - python setup.py test
+  - "sphinx-build -qnNW -b doctest docs docs/_build/doctest"
+
+after_success:
+  - coveralls
+
+notifications:
+  email: false
+
+deploy:
+  provider: pypi
+  user: lnielsen
+  password:
+    secure: e1kMOeUffgpYM/KF8tD6PS4sH/HsW3ZSZs2H3VsX2HzqUOGslLxEZMYd8RDDjK6oLKwZSU2aYRhMWzmudPAv75XB9f8mgj/v+aN9collcX9Na62W2GrJ2agZx/C8KRwhAWvN+psyofZ/ewQP8P+UQmeydKvk5+1Bu57Ml9LNIBvLhjRvuXrJ/xAdiUycYBcIn8HKLMjyBhTNuSDup37cV+nhY1UCI+4s4gA6fmdufjN2Tt+0xSc5/i4BHP0W94Uu+yrcCH6WUr8l7zuxWqLKE2rgyYuzprbfNX7AqnPVbs8Ar3fMtTWxg8I9KDEaF+TzG24Kzsp0WerCaQC12Xi7KlWB7H7HW5pXjlF72DaB0+Ecak15HmR3yhWjxpQJLQ9A1X1UkjkFkyLhGeXGn0bawxkftPngjs28ei75JGMik2wtSDC13PJG0M/SBKBteN8v3p6um2agUjDbBcRZVJp9BzpKnfalacQ7hncD15YafJVUYi+lglxl75Do2qFUBYg5fBpN0CU7t8/VVM6+kNQmjx4y5K2C3LRYKnWvYq5qgATRFEZClKLuDbtqd6sbeoJjlXrai+wPGWS3zx9r5JIpWSKVOqPVto1XI2q5g0eu+bZSo0uJFpb2FAr19gRhXC8JGrTBgV93rHUwsXGVv3FIvNN/9zhnCEb4KGIFDBTpTwU=
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+    python: "2.7"
+    condition: $REQUIREMENTS = latest
