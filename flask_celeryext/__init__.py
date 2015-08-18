@@ -55,19 +55,19 @@ You can now define tasks using the Celery application. By default the tasks
 will be run inside a Flask application context, and thus have access to e.g.
 ``current_app``:
 
-    >>> from flask import request
-    >>> from flask_celeryext import RequestContextTask
+    >>> from flask import current_app
     >>> @celery.task
     ... def apptask():
-    ...   return request.method
+    ...   return current_app.name
 
 If you need to run tasks inside a Flask request context, simply change the task
 base class:
 
-    >>> from flask import current_app
+    >>> from flask import request
+    >>> from flask_celeryext import RequestContextTask
     >>> @celery.task
     ... def reqtask(base=RequestContextTask):
-    ...   return current_app.name
+    ...   return request.method
 
 Application factory
 -------------------
