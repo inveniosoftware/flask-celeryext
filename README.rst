@@ -5,7 +5,7 @@
 About
 =====
 
-Flask-CeleryExt
+Flask-CeleryExt is a simple integration layer between Celery and Flask.
 
 Installation
 ============

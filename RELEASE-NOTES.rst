@@ -7,7 +7,7 @@ Flask-CeleryExt v0.1.0 was released on August 17, 2015.
 About
 -----
 
-Flask-CeleryExt ...
+Flask-CeleryExt is a simple integration layer between Celery and Flask.
 
 Installation
 ------------

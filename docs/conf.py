@@ -124,7 +124,18 @@ html_theme = 'alabaster'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    'description': 'Simple integration layer between Celery and Flask.',
+    'github_user': 'inveniosoftware',
+    'github_repo': 'flask-celeryext',
+    'github_button': False,
+    'github_banner': True,
+    'show_powered_by': False,
+    'extra_nav_links': {
+        'Flask-CLI@GitHub': 'http://github.com/inveniosoftware/flask-celeryext/',
+        'Flask-CLI@PyPI': 'http://pypi.python.org/pypi/Flask-CeleryExt/',
+    }
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
