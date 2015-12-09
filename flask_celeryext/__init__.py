@@ -100,6 +100,13 @@ Larger applications
 -------------------
 In a front-end Flask application you will usually only need a minimal Celery
 application configured in order for Celery to know which broker to use etc.
+
+.. note::
+
+   There is a difference with the Celery tutorial in Flask documentation.
+   One should use ``BROKER_URL`` configuration option  instead of
+   ``CELERY_BROKER_URL``.
+
 This minimal application however does not need to load all tasks upfront, as
 especially for larger applications loading many tasks can cause startup time to
 increase significantly.

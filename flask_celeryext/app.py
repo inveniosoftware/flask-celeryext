@@ -9,7 +9,7 @@
 
 """Flask extension for Celery integration."""
 
-from __future__ import absolute_import, print_function, unicode_literals
+from __future__ import absolute_import, print_function
 
 from celery import Celery, Task
 
@@ -27,11 +27,11 @@ def create_celery_app(flask_app):
 
 
 class AppContextTask(Task):
-
     """Celery task running within a Flask application context.
 
     Expects the associated Flask application to be set on the bound
-    Celery application."""
+    Celery application.
+    """
 
     abstract = True
 
@@ -42,11 +42,11 @@ class AppContextTask(Task):
 
 
 class RequestContextTask(Task):
-
     """Celery task running within Flask test request context.
 
     Expects the associated Flask application to be set on the bound
-    Celery application."""
+    Celery application.
+    """
 
     abstract = True
 

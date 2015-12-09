@@ -8,8 +8,14 @@
 # details.
 
 include LICENSE AUTHORS CHANGES README.rst
-include .coveragerc run-tests.sh pytest.ini tox.ini
+include .coveragerc .editorconfig run-tests.sh pytest.ini tox.ini
 include docs/*.rst docs/*.py docs/Makefile
 include tests/*.py
 recursive-include docs/_themes *.py *.css *.css_t *.conf *.html README
 recursive-include docs/_templates *.html
+
+# added by check_manifest.py
+include *.rst
+include *.txt
+include *.yml
+include Dockerfile

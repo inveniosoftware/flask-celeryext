@@ -44,9 +44,6 @@ class PyTest(TestCommand):
         """Run tests."""
         # import here, cause outside the eggs aren't loaded
         import pytest
-        import _pytest.config
-        pm = _pytest.config.get_plugin_manager()
-        pm.consider_setuptools_entrypoints()
         errno = pytest.main(self.pytest_args)
         sys.exit(errno)
 
@@ -57,13 +54,15 @@ with open(os.path.join('flask_celeryext', 'version.py'), 'rt') as f:
         f.read()
     ).group('version')
 
-
 tests_require = [
+    'check-manifest>=0.25',
+    'coverage>=4.0',
+    'isort>=4.2.2',
+    'pep257>=0.7.0',
     'pytest-cache>=1.0',
     'pytest-cov>=1.8.0',
     'pytest-pep8>=1.0.6',
-    'pytest>=2.6.1',
-    'coverage<4.0a1',
+    'pytest>=2.8.0',
 ]
 
 setup(
@@ -79,6 +78,9 @@ setup(
     include_package_data=True,
     zip_safe=False,
     platforms='any',
+    extras_require={
+        'tests': tests_require,
+    },
     install_requires=[
         'Flask>=0.10',
         'celery>=3.0',
@@ -87,10 +89,12 @@ setup(
     cmdclass={'test': PyTest},
     classifiers=[
         'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Utilities',
     ],
 )

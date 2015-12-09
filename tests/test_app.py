@@ -9,10 +9,11 @@
 
 """Tests for Celery application factory."""
 
-from __future__ import absolute_import, print_function, unicode_literals
+from __future__ import absolute_import, print_function
 
 import pytest
 from flask import Flask, current_app, request
+
 from flask_celeryext import AppContextTask, RequestContextTask, \
     create_celery_app
 

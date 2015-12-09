@@ -9,11 +9,11 @@
 
 """Tests for extension."""
 
-from __future__ import absolute_import, print_function, unicode_literals
+from __future__ import absolute_import, print_function
 
 from celery import Celery
-
 from flask import Flask
+
 from flask_celeryext import FlaskCeleryExt
 
 

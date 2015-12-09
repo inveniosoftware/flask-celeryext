@@ -9,13 +9,12 @@
 
 """Flask extension for Celery integration."""
 
-from __future__ import absolute_import, print_function, unicode_literals
+from __future__ import absolute_import, print_function
 
 from .app import create_celery_app as pkg_create_celery_app
 
 
 class FlaskCeleryExt(object):
-
     """Flask-Celery extension."""
 
     def __init__(self, app=None, create_celery_app=None):

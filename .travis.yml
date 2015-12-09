@@ -15,6 +15,7 @@ python:
   - "2.7"
   - "3.3"
   - "3.4"
+  - "3.5"
 
 env:
   - REQUIREMENTS=lowest
@@ -29,12 +30,10 @@ install:
   - "travis_retry pip install pytest pytest-cov pytest-cache"
   - "if test -e requirements.${REQUIREMENTS}.${TRAVIS_PYTHON_VERSION}.txt; then REQ=${REQUIREMENTS}.${TRAVIS_PYTHON_VERSION}; else REQ=${REQUIREMENTS}; fi;"
   - "travis_retry pip install -r requirements.${REQ}.txt"
-  - "travis_retry pip install -e ."
+  - "travis_retry pip install -e .[tests]"
 
 script:
-  - "sphinx-build -qnNW docs docs/_build/html"
-  - python setup.py test
-  - "sphinx-build -qnNW -b doctest docs docs/_build/doctest"
+  - "./run-tests.sh"
 
 after_success:
   - coveralls
