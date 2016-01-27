@@ -12,6 +12,7 @@
 from __future__ import absolute_import, print_function
 
 import pytest
+from celery import Celery
 from flask import Flask, current_app, request
 
 from flask_celeryext import AppContextTask, RequestContextTask, \
@@ -19,7 +20,6 @@ from flask_celeryext import AppContextTask, RequestContextTask, \
 
 
 class eager_conf:
-
     """Configuration for testing Celery tasks."""
 
     CELERY_ALWAYS_EAGER = True
@@ -30,6 +30,10 @@ class eager_conf:
 
 def test_factory():
     """Test of factory method."""
+    # Set the current Celery application
+    c = Celery('mycurrent')
+    c.set_current()
+
     app = Flask("myapp")
     celery = create_celery_app(app)
     assert celery
@@ -40,6 +44,10 @@ def test_appctx_task():
     """Test execution of Celery task with application context."""
     app = Flask("myapp")
     app.config.from_object(eager_conf)
+
+    # Set the current Celery application
+    c = Celery('mycurrent')
+    c.set_current()
 
     celery = create_celery_app(app)
 

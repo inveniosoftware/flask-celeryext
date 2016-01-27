@@ -121,7 +121,7 @@ Testing
 Testing your celery tasks is rather easy. First ensure that you Celery is
 configured to execute tasks eagerly and stores results in local memory:
 
-    >>> app = Flask("testapp")
+    >>> app = Flask("myapp")
     >>> app.config.update(dict(
     ...     CELERY_ALWAYS_EAGER=True,
     ...     CELERY_RESULT_BACKEND="cache",
@@ -139,7 +139,7 @@ And finally execute your task:
 
     >>> r = test.delay()
     >>> r.result
-    'testapp'
+    'myapp'
 """
 
 from __future__ import absolute_import, print_function, unicode_literals

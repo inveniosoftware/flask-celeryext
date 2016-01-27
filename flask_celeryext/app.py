@@ -11,17 +11,19 @@
 
 from __future__ import absolute_import, print_function
 
-from celery import Celery, Task
+from celery import current_app as current_celery_app
+from celery import Task
 
 
 def create_celery_app(flask_app):
     """Create a Celery application."""
-    celery = Celery(flask_app.import_name)
+    celery = current_celery_app
     celery.conf.update(flask_app.config)
     celery.Task = AppContextTask
 
     # Set Flask application object on the Celery application.
-    celery.flask_app = flask_app
+    if not hasattr(celery, 'flask_app'):
+        celery.flask_app = flask_app
 
     return celery
 
