@@ -12,7 +12,7 @@ FROM python:2.7
 # from the docker build cache:
 RUN pip install coveralls \
                 ipython \
-                pep257 \
+                pydocstyle \
                 pytest \
                 pytest-cache \
                 pytest-cov \
