@@ -71,7 +71,7 @@ setup(
     url='http://github.com/inveniosoftware/flask-cli/',
     license='BSD',
     author='Invenio Collaboration',
-    author_email='info@invenio-software.org',
+    author_email='info@inveniosoftware.org',
     description=__doc__,
     long_description=open('README.rst').read(),
     packages=['flask_celeryext', ],
