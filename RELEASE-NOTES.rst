@@ -20,22 +20,18 @@ Incompatible changes
 Installation
 ------------
 
-   $ pip install flask-cli==0.2.0
+   $ pip install flask-celeryext==0.2.0
 
 Documentation
 -------------
 
-   http://flask-cli.readthedocs.org/en/v0.2.0
-
-Homepage
---------
-
-   https://github.com/inveniosoftware/flask-celeryext
+   http://pythonhosted.org/flask-celeryext/
 
 Happy hacking and thanks for flying Flask-CeleryExt.
 
 | Invenio Development Team
 |   Email: info@inveniosoftware.org
+|   IRC: #invenio on irc.freenode.net
 |   Twitter: http://twitter.com/inveniosoftware
-|   GitHub: http://github.com/inveniosoftware
+|   GitHub: https://github.com/inveniosoftware/flask-celeryext
 |   URL: http://inveniosoftware.org

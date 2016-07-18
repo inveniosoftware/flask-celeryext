@@ -19,7 +19,7 @@
 
 .. automodule:: flask_celeryext
 
-.. include:: ../CHANGES
+.. include:: ../CHANGES.rst
 
 .. include:: ../CONTRIBUTING.rst
 
@@ -28,4 +28,4 @@ License
 
 .. include:: ../LICENSE
 
-.. include:: ../AUTHORS
+.. include:: ../AUTHORS.rst

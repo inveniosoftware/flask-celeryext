@@ -1,45 +1,51 @@
 # This file is part of Flask-CeleryExt
-# Copyright (C) 2015 CERN.
+# Copyright (C) 2015, 2016 CERN.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
 # details.
 
 
+notifications:
+  email: false
+
 sudo: false
 
 language: python
 
-python:
-  - "2.6"
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-
-env:
-  - REQUIREMENTS=lowest
-  - REQUIREMENTS=latest
-  - REQUIREMENTS=devel
-
 cache:
   - pip
 
+env:
+  - REQUIREMENTS=lowest
+  - REQUIREMENTS=release
+  - REQUIREMENTS=devel
+
+python:
+  - "2.7"
+  - "3.5"
+  - "pypy"
+
+matrix:
+  allow_failures:
+    - python: pypy
+
+before_install:
+  - "travis_retry pip install --upgrade pip setuptools py"
+  - "travis_retry pip install twine wheel coveralls requirements-builder"
+  - "requirements-builder --level=min setup.py > .travis-lowest-requirements.txt"
+  - "requirements-builder --level=pypi setup.py > .travis-release-requirements.txt"
+  - "requirements-builder --level=dev --req requirements-devel.txt setup.py > .travis-devel-requirements.txt"
+
 install:
-  - "travis_retry pip install coveralls Sphinx twine wheel"
-  - "travis_retry pip install pytest pytest-cov pytest-cache"
-  - "if test -e requirements.${REQUIREMENTS}.${TRAVIS_PYTHON_VERSION}.txt; then REQ=${REQUIREMENTS}.${TRAVIS_PYTHON_VERSION}; else REQ=${REQUIREMENTS}; fi;"
-  - "travis_retry pip install -r requirements.${REQ}.txt"
-  - "travis_retry pip install -e .[tests]"
+  - "travis_retry pip install -r .travis-${REQUIREMENTS}-requirements.txt"
+  - "travis_retry pip install -e .[all]"
 
 script:
   - "./run-tests.sh"
 
 after_success:
   - coveralls
-
-notifications:
-  email: false
 
 deploy:
   provider: pypi
