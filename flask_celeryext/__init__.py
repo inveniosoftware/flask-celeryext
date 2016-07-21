@@ -15,18 +15,6 @@ execution of tasks in a Flask application context, the extension also supports
 execution of task in a test request context (e.g. to ensure that before first
 request functions have been executed).
 
-Installation
-============
-
-The Flask-CeleryExt package is on PyPI so all you need is:
-
-.. code-block:: console
-
-    $ pip install flask-celeryext
-
-Usage
-=====
-
 Extension initialization
 ------------------------
 
@@ -40,6 +28,11 @@ Initialize the extension like this:
 or alternatively using the factory pattern:
 
     >>> app = Flask('myapp')
+    >>> app.config.update(dict(
+    ...     CELERY_ALWAYS_EAGER=True,
+    ...     CELERY_RESULT_BACKEND='cache',
+    ...     CELERY_CACHE_BACKEND='memory',
+    ...     CELERY_EAGER_PROPAGATES_EXCEPTIONS=True))
     >>> ext = FlaskCeleryExt()
     >>> ext.init_app(app)
 
@@ -58,16 +51,24 @@ will be run inside a Flask application context, and thus have access to e.g.
     >>> from flask import current_app
     >>> @celery.task
     ... def apptask():
-    ...   return current_app.name
+    ...     return current_app.name
+
+    >>> r = apptask.delay()
+    >>> r.result
+    'myapp'
 
 If you need to run tasks inside a Flask request context, simply change the task
 base class:
 
-    >>> from flask import request
+    >>> from flask import has_request_context, request
     >>> from flask_celeryext import RequestContextTask
-    >>> @celery.task
-    ... def reqtask(base=RequestContextTask):
-    ...   return request.method
+    >>> @celery.task(base=RequestContextTask)
+    ... def reqtask():
+    ...     return has_request_context()
+
+    >>> r = reqtask.delay()
+    >>> r.result
+    True
 
 Application factory
 -------------------
@@ -80,7 +81,7 @@ can also use separately:
     >>> celery = create_celery_app(app)
     >>> @celery.task
     ... def appctx():
-    ...     return "test"
+    ...     return 'test'
 
 It's also possible to provide a custom Celery application factory to the
 extension:
@@ -113,7 +114,7 @@ increase significantly.
 The background worker on the other hand usually needs to load tasks upfront in
 order to know which tasks it can handle.
 
-See http://flask-appfactory.readthedocs.org for a solution on using
+See http://flask-appfactory.readthedocs.io for a solution on using
 Flask-CeleryExt in larger applications.
 
 Testing
@@ -121,25 +122,26 @@ Testing
 Testing your celery tasks is rather easy. First ensure that you Celery is
 configured to execute tasks eagerly and stores results in local memory:
 
-    >>> app = Flask("myapp")
+    >>> app = Flask('myapp')
     >>> app.config.update(dict(
     ...     CELERY_ALWAYS_EAGER=True,
-    ...     CELERY_RESULT_BACKEND="cache",
-    ...     CELERY_CACHE_BACKEND="memory",
+    ...     CELERY_RESULT_BACKEND='cache',
+    ...     CELERY_CACHE_BACKEND='memory',
     ...     CELERY_EAGER_PROPAGATES_EXCEPTIONS=True))
     >>> celery = create_celery_app(app)
 
 You can now create your task:
 
-    >>> @celery.task
+    >>> from celery import current_task
+    >>> @celery.task(name='myapp.test_name')
     ... def test():
-    ...     return current_app.name
+    ...     return current_task.name
 
 And finally execute your task:
 
     >>> r = test.delay()
     >>> r.result
-    'myapp'
+    'myapp.test_name'
 """
 
 from __future__ import absolute_import, print_function, unicode_literals

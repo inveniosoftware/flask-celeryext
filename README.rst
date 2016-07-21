@@ -2,6 +2,21 @@
  Flask-CeleryExt
 =================
 
+.. image:: https://img.shields.io/travis/inveniosoftware/flask-celeryext.svg
+        :target: https://travis-ci.org/inveniosoftware/flask-celeryext
+
+.. image:: https://img.shields.io/coveralls/inveniosoftware/flask-celeryext.svg
+        :target: https://coveralls.io/r/inveniosoftware/flask-celeryext
+
+.. image:: https://img.shields.io/github/tag/inveniosoftware/flask-celeryext.svg
+        :target: https://github.com/inveniosoftware/flask-celeryext/releases
+
+.. image:: https://img.shields.io/pypi/dm/flask-celeryext.svg
+        :target: https://pypi.python.org/pypi/flask-celeryext
+
+.. image:: https://img.shields.io/github/license/inveniosoftware/flask-celeryext.svg
+        :target: https://github.com/inveniosoftware/flask-celeryext/blob/master/LICENSE
+
 About
 =====
 
@@ -17,7 +32,7 @@ Flask-CeleryExt is on PyPI so all you need is: ::
 Documentation
 =============
 
-Documentation is readable at http://flask-celeryext.readthedocs.org or can be
+Documentation is readable at http://flask-celeryext.readthedocs.io or can be
 build using Sphinx: ::
 
     pip install Sphinx

@@ -57,7 +57,7 @@ with open(os.path.join('flask_celeryext', 'version.py'), 'rt') as fp:
     version = g['__version__']
 
 setup(
-    name='flask-celeryext',
+    name='Flask-CeleryExt',
     version=version,
     description=__doc__,
     long_description=readme + '\n\n' + history,

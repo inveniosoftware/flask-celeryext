@@ -1,21 +1,16 @@
-=================
- Flask-CeleryExt
-=================
-.. currentmodule:: flask_celeryext
+..
+    This file is part of Flask-CeleryExt
+    Copyright (C) 2015, 2016 CERN.
 
-.. raw:: html
+    Flask-CeleryExt is free software; you can redistribute it and/or modify it
+    under the terms of the Revised BSD License; see LICENSE file for more
+    details.
 
-    <p style="height:22px; margin:0 0 0 2em; float:right">
-        <a href="https://travis-ci.org/inveniosoftware/flask-celeryext">
-            <img src="https://travis-ci.org/inveniosoftware/flask-celeryext.svg?branch=master"
-                 alt="travis-ci badge"/>
-        </a>
-        <a href="https://coveralls.io/r/inveniosoftware/flask-celeryext">
-            <img src="https://coveralls.io/repos/inveniosoftware/flask-celeryext/badge.svg?branch=master"
-                 alt="coveralls.io badge"/>
-        </a>
-    </p>
+.. include:: ../README.rst
+   :end-before: Documentation
 
+Usage
+=====
 
 .. automodule:: flask_celeryext
 
