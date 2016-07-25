@@ -123,8 +123,8 @@ html_theme_options = {
     'github_banner': True,
     'show_powered_by': False,
     'extra_nav_links': {
-        'flask-celeryext@GitHub': 'http://github.com/inveniosoftware/flask-celeryext',
-        'flask-celeryext@PyPI': 'http://pypi.python.org/pypi/flask-celeryext/',
+        'flask-celeryext@GitHub': 'https://github.com/inveniosoftware/flask-celeryext',
+        'flask-celeryext@PyPI': 'https://pypi.python.org/pypi/flask-celeryext/',
     }
 }
 

@@ -1,6 +1,12 @@
 Changes
 =======
 
+Version 0.2.1 (released 2016-07-25)
+
+Improved features
+
+- Improves documentation structure and its automatic generation.
+
 Version 0.2.0 (released 2016-02-02)
 
 Incompatible changes

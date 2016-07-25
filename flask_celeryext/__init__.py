@@ -10,7 +10,7 @@
 """Simple integration layer between Celery and Flask.
 
 This extension adds a small integration layer between Celery and Flask based on
-http://flask.pocoo.org/docs/0.10/patterns/celery/. In addition to support
+https://flask.pocoo.org/docs/0.10/patterns/celery/. In addition to support
 execution of tasks in a Flask application context, the extension also supports
 execution of task in a test request context (e.g. to ensure that before first
 request functions have been executed).
@@ -114,7 +114,7 @@ increase significantly.
 The background worker on the other hand usually needs to load tasks upfront in
 order to know which tasks it can handle.
 
-See http://flask-appfactory.readthedocs.io for a solution on using
+See https://flask-appfactory.readthedocs.io for a solution on using
 Flask-CeleryExt in larger applications.
 
 Testing
