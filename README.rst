@@ -32,7 +32,7 @@ Flask-CeleryExt is on PyPI so all you need is: ::
 Documentation
 =============
 
-Documentation is readable at https://pythonhosted.org/flask-celeryext/ or can be
+Documentation is readable at https://flask-celeryext.readthedocs.io/ or can be
 build using Sphinx: ::
 
     pip install Sphinx

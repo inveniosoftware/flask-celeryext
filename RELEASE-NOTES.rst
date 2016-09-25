@@ -22,7 +22,7 @@ Installation
 Documentation
 -------------
 
-   https://pythonhosted.org/flask-celeryext/
+   https://flask-celeryext.readthedocs.io/
 
 Happy hacking and thanks for flying Flask-CeleryExt.
 

@@ -9,7 +9,7 @@
 
 include LICENSE *.rst
 include .coveragerc .editorconfig run-tests.sh pytest.ini tox.ini
-include docs/*.rst docs/*.py docs/Makefile
+include docs/*.rst docs/*.py docs/Makefile docs/requirements.txt
 include tests/*.py
 recursive-include docs/_themes *.py *.css *.css_t *.conf *.html README
 recursive-include docs/_templates *.html
