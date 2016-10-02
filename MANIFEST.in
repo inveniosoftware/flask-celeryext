@@ -7,7 +7,9 @@
 # under the terms of the Revised BSD License; see LICENSE file for more
 # details.
 
-include LICENSE *.rst
+include .lgtm
+include LICENSE
+include MAINTAINERS *.rst
 include .coveragerc .editorconfig run-tests.sh pytest.ini tox.ini
 include docs/*.rst docs/*.py docs/Makefile docs/requirements.txt
 include tests/*.py
