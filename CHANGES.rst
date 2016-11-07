@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version 0.2.2 (released 2016-11-07)
+
+- Forces celery version to v3.1-4.0 due to problem with 4.x.
+
 Version 0.2.1 (released 2016-07-25)
 
 Improved features
