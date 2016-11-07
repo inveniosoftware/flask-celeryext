@@ -44,7 +44,7 @@ setup_requires = [
 
 install_requires = [
     'Flask>=0.10',
-    'celery>=3.1',
+    'celery>=3.1,<4.0',
 ]
 
 packages = find_packages()
