@@ -12,7 +12,15 @@
 from __future__ import absolute_import, print_function
 
 from celery import current_app as current_celery_app
-from celery import Task
+from celery import Task, signals
+
+
+def setup_task_logger(logger=None, **kwargs):
+    """Make celery.task logger propagate exceptions.
+
+    Ensures that handlers in the RootLogger such as Sentry will be run.
+    """
+    logger.propagate = 1
 
 
 def create_celery_app(flask_app):
@@ -25,6 +33,7 @@ def create_celery_app(flask_app):
     if not hasattr(celery, 'flask_app'):
         celery.flask_app = flask_app
 
+    signals.after_setup_task_logger.connect(setup_task_logger)
     return celery
 
 

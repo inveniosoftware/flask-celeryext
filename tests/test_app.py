@@ -13,6 +13,7 @@ from __future__ import absolute_import, print_function
 
 import pytest
 from celery import Celery
+from celery.utils.log import get_task_logger
 from flask import Flask, current_app, request
 
 from flask_celeryext import AppContextTask, RequestContextTask, \
@@ -77,3 +78,20 @@ def test_reqctx_task():
     assert r.result == "GET"
 
     assert pytest.raises(RuntimeError, reqctx2.delay)
+
+
+def test_task_logger_propagation():
+    """Test log propagation of Celery task."""
+    app = Flask("myapp")
+    app.config.from_object(eager_conf)
+    celery = create_celery_app(app)
+    celery.log.setup_task_loggers()
+
+    @celery.task()
+    def logtask():
+        logger = get_task_logger(__name__)
+        while getattr(logger, 'parent', None):
+            assert logger.propagate == 1
+            logger = logger.parent
+
+    logtask.delay()
