@@ -10,7 +10,7 @@
 include .lgtm
 include LICENSE
 include MAINTAINERS *.rst
-include .coveragerc .editorconfig run-tests.sh pytest.ini tox.ini
+include .coveragerc .editorconfig run-tests.sh pytest.ini
 include docs/*.rst docs/*.py docs/Makefile docs/requirements.txt
 include tests/*.py
 recursive-include docs/_themes *.py *.css *.css_t *.conf *.html README

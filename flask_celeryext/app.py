@@ -11,8 +11,28 @@
 
 from __future__ import absolute_import, print_function
 
+import warnings
+from distutils.version import StrictVersion
+
+from celery import __version__ as celery_version
 from celery import current_app as current_celery_app
 from celery import Task, signals
+
+from ._mapping import V3TOV4MAPPING
+
+CELERY_4_OR_GREATER = StrictVersion(celery_version) >= StrictVersion('4.0')
+
+
+def v3tov4config(config, mapping):
+    """Translate Celery v3 configuration to v4."""
+    for new, old in mapping.items():
+        if new not in config and old in config:
+            warnings.warn(
+                'Celery v4 installed, but detected Celery v3 '
+                'configuration %s (use %s instead).' % (old, new),
+                UserWarning
+            )
+            config[new] = config[old]
 
 
 def setup_task_logger(logger=None, **kwargs):
@@ -26,7 +46,13 @@ def setup_task_logger(logger=None, **kwargs):
 def create_celery_app(flask_app):
     """Create a Celery application."""
     celery = current_celery_app
-    celery.conf.update(flask_app.config)
+
+    if CELERY_4_OR_GREATER:
+        v3tov4config(flask_app.config, V3TOV4MAPPING)
+        celery.config_from_object(flask_app.config, namespace='CELERY')  # pragma: no cover
+    else:
+        celery.config_from_object(flask_app.config)  # pragma: no cover
+
     celery.Task = AppContextTask
 
     # Set Flask application object on the Celery application.

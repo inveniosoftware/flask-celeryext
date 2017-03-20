@@ -44,7 +44,7 @@ setup_requires = [
 
 install_requires = [
     'Flask>=0.10',
-    'celery>=3.1,<4.0',
+    'celery>=3.1',
 ]
 
 packages = find_packages()
@@ -82,6 +82,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Software Development :: Object Brokering',
+        'Topic :: System :: Distributed Computing',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',

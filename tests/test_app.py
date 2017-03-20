@@ -18,15 +18,79 @@ from flask import Flask, current_app, request
 
 from flask_celeryext import AppContextTask, RequestContextTask, \
     create_celery_app
+from flask_celeryext.app import CELERY_4_OR_GREATER
 
 
-class eager_conf:
-    """Configuration for testing Celery tasks."""
+class eager_conf_v4:
+    """Configuration for testing Celery tasks for Celery >= 4.0."""
 
-    CELERY_ALWAYS_EAGER = True
+    CELERY_TASK_ALWAYS_EAGER = True
+    CELERY_TASK_EAGER_PROPAGATES = True
     CELERY_RESULT_BACKEND = "cache"
     CELERY_CACHE_BACKEND = "memory"
+
+
+class eager_conf_v3:
+    """Configuration for testing Celery tasks for Celery < 4.0."""
+
+    CELERY_ALWAYS_EAGER = True
     CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+    CELERY_RESULT_BACKEND = "cache"
+    CELERY_CACHE_BACKEND = "memory"
+
+
+eager_conf = eager_conf_v4 if CELERY_4_OR_GREATER else eager_conf_v3
+
+
+@pytest.mark.skipif(CELERY_4_OR_GREATER, reason="requires Celery < 4.0")
+def test_config3():
+    """Test passing in config."""
+    c = Celery('mycurrent')
+    c.set_current()
+
+    app = Flask("myapp")
+    app.config.from_object(eager_conf)
+    celery = create_celery_app(app)
+    assert celery
+    assert celery.flask_app == app
+    assert celery.conf.CELERY_ALWAYS_EAGER
+    assert celery.conf.CELERY_EAGER_PROPAGATES_EXCEPTIONS
+    assert celery.conf.CELERY_RESULT_BACKEND == 'cache'
+    assert celery.conf.CELERY_CACHE_BACKEND == 'memory'
+
+
+@pytest.mark.skipif(not CELERY_4_OR_GREATER, reason="requires Celery >= 4.0")
+def test_config4():
+    """Test passing in config."""
+    c = Celery('mycurrent')
+    c.set_current()
+
+    app = Flask("myapp")
+    app.config.from_object(eager_conf)
+    celery = create_celery_app(app)
+    assert celery
+    assert celery.flask_app == app
+    assert celery.conf.task_always_eager
+    assert celery.conf.task_eager_propagates
+    assert celery.conf.result_backend == 'cache'
+    assert celery.conf.cache_backend == 'memory'
+
+
+@pytest.mark.skipif(not CELERY_4_OR_GREATER, reason="requires Celery >= 4.0")
+def test_config3_on_4():
+    """Test passing in config."""
+    c = Celery('mycurrent')
+    c.set_current()
+
+    app = Flask("myapp")
+    app.config.from_object(eager_conf_v3)
+    celery = create_celery_app(app)
+    assert celery
+    assert celery.flask_app == app
+    assert celery.conf.task_always_eager
+    assert celery.conf.task_eager_propagates
+    assert celery.conf.result_backend == 'cache'
+    assert celery.conf.cache_backend == 'memory'
 
 
 def test_factory():
