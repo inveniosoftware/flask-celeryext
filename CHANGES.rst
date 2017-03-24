@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version 0.3.0 (released 2017-03-24)
+
+- Adds support for Celery v4.
+
 Version 0.2.2 (released 2016-11-07)
 
 - Forces celery version to v3.1-4.0 due to problem with 4.x.

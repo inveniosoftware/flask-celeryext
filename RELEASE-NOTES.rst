@@ -1,23 +1,23 @@
 ========================
- Flask-CeleryExt v0.2.2
+ Flask-CeleryExt v0.3.0
 ========================
 
-Flask-CeleryExt v0.2.2 was released on November 7, 2016.
+Flask-CeleryExt v0.3.0 was released on March 24, 2017.
 
 About
 -----
 
 Flask-CeleryExt is a simple integration layer between Celery and Flask.
 
-Fixes
------
+Changes
+-------
 
-- Forces celery version to v3.1-4.0 due to problem with 4.x.
+- Adds support for Celery v4.
 
 Installation
 ------------
 
-   $ pip install flask-celeryext==0.2.2
+   $ pip install flask-celeryext==0.3.0
 
 Documentation
 -------------
