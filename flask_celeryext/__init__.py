@@ -41,6 +41,24 @@ loaded from the Flask application:
 
     >>> celery = ext.celery
 
+Celery v3 and v4 configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The extension supports both Celery v3 and v4. The configuration for v3
+and v4 is however significantly different. Above configuration is for Celery
+v3 while in v4 you should use:
+
+    >>> v4conf = dict(
+    ...     CELERY_TASK_ALWAYS_EAGER=True,
+    ...     CELERY_RESULT_BACKEND='cache',
+    ...     CELERY_CACHE_BACKEND='memory',
+    ...     CELERY_TASK_EAGER_PROPAGATES=True)
+
+If you have Celery v4 installed but use v3 configuration the extension will
+automatically translate your configuration from v3 to v4 and issue a warning.
+
+All configuration variables for v4 are prefixed with ``CELERY_`` and in upper
+case.
+
 Defining tasks
 --------------
 
