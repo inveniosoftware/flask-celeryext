@@ -132,9 +132,6 @@ increase significantly.
 The background worker on the other hand usually needs to load tasks upfront in
 order to know which tasks it can handle.
 
-See https://flask-appfactory.readthedocs.io for a solution on using
-Flask-CeleryExt in larger applications.
-
 Testing
 -------
 Testing your celery tasks is rather easy. First ensure that you Celery is
