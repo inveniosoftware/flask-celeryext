@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Flask-CeleryExt
-# Copyright (C) 2015, 2016, 2017 CERN.
+# Copyright (C) 2015, 2016, 2017, 2018 CERN.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -12,7 +12,7 @@
 from __future__ import absolute_import, print_function
 
 import warnings
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 from celery import __version__ as celery_version
 from celery import current_app as current_celery_app
@@ -20,7 +20,7 @@ from celery import Task, signals
 
 from ._mapping import V3TOV4MAPPING
 
-CELERY_4_OR_GREATER = StrictVersion(celery_version) >= StrictVersion('4.0')
+CELERY_4_OR_GREATER = LooseVersion(celery_version) >= LooseVersion('4.0')
 
 
 def v3tov4config(config, mapping):
