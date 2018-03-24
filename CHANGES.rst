@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version 0.3.1 (released 2018-03-26)
+
+- Accounts for non-strict Celery versions.
+
 Version 0.3.0 (released 2017-03-24)
 
 - Adds support for Celery v4.
