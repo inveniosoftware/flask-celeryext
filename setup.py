@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Flask-CeleryExt
-# Copyright (C) 2015, 2016, 2017 CERN.
+# Copyright (C) 2015, 2016, 2017, 2018 CERN.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -19,7 +19,7 @@ history = open('CHANGES.rst').read()
 tests_require = [
     'check-manifest>=0.25',
     'coverage>=4.0',
-    'isort>=4.2.2',
+    'isort>=4.3.4',
     'pydocstyle>=1.0.0',
     'pytest-cache>=1.0',
     'pytest-cov>=1.8.0',
