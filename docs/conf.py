@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Flask-CeleryExt
-# Copyright (C) 2015, 2016 CERN.
+# Copyright (C) 2015, 2016, 2018 CERN.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -12,7 +12,6 @@ from __future__ import print_function
 import os
 
 import sphinx.environment
-
 
 # -- General configuration ------------------------------------------------
 

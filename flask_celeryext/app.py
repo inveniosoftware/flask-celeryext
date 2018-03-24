@@ -14,9 +14,10 @@ from __future__ import absolute_import, print_function
 import warnings
 from distutils.version import LooseVersion
 
+from celery import Task
 from celery import __version__ as celery_version
 from celery import current_app as current_celery_app
-from celery import Task, signals
+from celery import signals
 
 from ._mapping import V3TOV4MAPPING
 
