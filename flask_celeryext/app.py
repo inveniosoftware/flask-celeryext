@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Flask-CeleryExt
-# Copyright (C) 2015, 2016, 2017, 2018 CERN.
+# Copyright (C) 2015-2019 CERN.
+# Copyright (C) 2018-2019 infarm - Indoor Urban Farming GmbH.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -14,6 +15,7 @@ from __future__ import absolute_import, print_function
 import warnings
 from distutils.version import LooseVersion
 
+import flask
 from celery import Task
 from celery import __version__ as celery_version
 from celery import current_app as current_celery_app
@@ -75,6 +77,9 @@ class AppContextTask(Task):
 
     def __call__(self, *args, **kwargs):
         """Execute task."""
+        # If an "app_context" has already been loaded, just pass through
+        if flask._app_ctx_stack.top is not None:
+            return Task.__call__(self, *args, **kwargs)
         with self.app.flask_app.app_context():
             return Task.__call__(self, *args, **kwargs)
 

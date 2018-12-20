@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 #
 # This file is part of Flask-CeleryExt
-# Copyright (C) 2015, 2016, 2017 CERN.
+# Copyright (C) 2015-2019 CERN.
+# Copyright (C) 2018-2019 infarm - Indoor Urban Farming GmbH.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -159,3 +160,28 @@ def test_task_logger_propagation():
             logger = logger.parent
 
     logtask.delay()
+
+
+def test_subtask_and_eager_dont_create_new_app_context(mocker):
+    app = Flask("myapp")
+    app.config.from_object(eager_conf)
+    # Set the current Celery application
+    c = Celery('mycurrent')
+    c.set_current()
+
+    celery = create_celery_app(app)
+
+    spy = mocker.spy(app, 'app_context')
+
+    @celery.task
+    def subtask():
+        return current_app.name
+
+    @celery.task
+    def maintask():
+        future = subtask.delay()
+        return future.result
+
+    r = maintask.delay()
+    assert r.result == "myapp"
+    assert spy.call_count == 1
