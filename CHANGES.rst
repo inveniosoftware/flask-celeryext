@@ -1,6 +1,11 @@
 Changes
 =======
 
+Version 0.3.2 (released 2019-06-20)
+
+- Uses correct Celery version for Python 3.7.
+- Prevents multiple creation and pushing of Flask application contexts.
+
 Version 0.3.1 (released 2018-03-26)
 
 - Accounts for non-strict Celery versions.
