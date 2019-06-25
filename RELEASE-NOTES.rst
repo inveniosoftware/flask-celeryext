@@ -1,8 +1,8 @@
 ========================
- Flask-CeleryExt v0.3.1
+ Flask-CeleryExt v0.3.2
 ========================
 
-Flask-CeleryExt v0.3.1 was released on March 26, 2018.
+Flask-CeleryExt v0.3.2 was released on June 25, 2019.
 
 About
 -----
@@ -17,7 +17,7 @@ Changes
 Installation
 ------------
 
-   $ pip install flask-celeryext==0.3.1
+   $ pip install flask-celeryext==0.3.2
 
 Documentation
 -------------
