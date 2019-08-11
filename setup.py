@@ -33,12 +33,6 @@ extras_require = {
     'docs': [
         'Sphinx>=1.4.2',
     ],
-    ':python_version<"3.7"': [
-            'celery>=3.1'
-        ],
-    ':python_version=="3.7"': [
-            'celery>=4.3'
-        ],
     'tests': tests_require,
 }
 
@@ -52,7 +46,8 @@ setup_requires = [
 
 install_requires = [
     'Flask>=0.10',
-    'celery>=3.1',
+    'celery>=3.1;python_version<"3.7"',
+    'celery>=4.3;python_version=="3.7"',
 ]
 
 packages = find_packages()
