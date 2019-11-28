@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version 0.3.3 (released 2019-11-26)
+
+- Adjust celery minimal version to fix not supported msgpack
+
 Version 0.3.2 (released 2019-06-25)
 
 - Uses correct Celery version for Python 3.7.
