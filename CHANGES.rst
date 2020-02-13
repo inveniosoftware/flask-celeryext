@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version 0.3.3 (released 2020-02-13)
+
+- fix celery version for Python < 3.7
+
 Version 0.3.2 (released 2019-06-25)
 
 - Uses correct Celery version for Python 3.7.
