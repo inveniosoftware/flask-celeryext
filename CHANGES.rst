@@ -1,9 +1,14 @@
 Changes
 =======
 
+Version 0.3.4 (released 2020-02-17)
+
+- Adds support for Python 3.8
+- Fixes pin for Celery on Python <3.7.
+
 Version 0.3.3 (released 2020-02-13)
 
-- fix celery version for Python < 3.7
+- Fix celery version for Python < 3.7
 
 Version 0.3.2 (released 2019-06-25)
 
