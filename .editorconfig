@@ -24,8 +24,8 @@ indent_size = 4
 [*.{css,html,js,json,yml}]
 indent_size = 2
 
-# Matches the exact files either package.json or .travis.yml
-[{package.json,.travis.yml}]
+# Matches the exact files either package.json or .github/workflows/*.yml
+[{package.json, .github/workflows/*.yml}]
 indent_size = 2
 
 # Dockerfile

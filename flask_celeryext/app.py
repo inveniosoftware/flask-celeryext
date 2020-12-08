@@ -52,7 +52,10 @@ def create_celery_app(flask_app):
 
     if CELERY_4_OR_GREATER:
         v3tov4config(flask_app.config, V3TOV4MAPPING)
-        celery.config_from_object(flask_app.config, namespace='CELERY')  # pragma: no cover
+        celery.config_from_object(
+            flask_app.config,
+            namespace='CELERY'
+        )  # pragma: no cover
     else:
         celery.config_from_object(flask_app.config)  # pragma: no cover
 

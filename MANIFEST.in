@@ -21,3 +21,4 @@ include *.rst
 include *.txt
 include *.yml
 include Dockerfile
+recursive-include .github/workflows *.yml
