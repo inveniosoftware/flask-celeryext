@@ -18,20 +18,13 @@ readme = open('README.rst').read()
 history = open('CHANGES.rst').read()
 
 tests_require = [
-    'check-manifest>=0.25',
-    'coverage>=4.0',
-    'isort>=4.3.4',
-    'pydocstyle>=1.0.0',
-    'pytest-cache>=1.0',
-    'pytest-cov>=1.8.0',
-    'pytest-pep8>=1.0.6',
-    'pytest>=2.8.0',
-    'pytest-mock>=1.6.0',
+    'pytest-mock>=2.0.0',
+    'pytest-invenio>=1.4.0',
 ]
 
 extras_require = {
     'docs': [
-        'Sphinx>=1.4.2',
+        'Sphinx>=3',
     ],
     'tests': tests_require,
 }
@@ -87,10 +80,10 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Software Development :: Object Brokering',
         'Topic :: System :: Distributed Computing',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Development Status :: 5 - Production/Stable',
     ],
 )

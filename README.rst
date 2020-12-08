@@ -2,8 +2,8 @@
  Flask-CeleryExt
 =================
 
-.. image:: https://img.shields.io/travis/inveniosoftware/flask-celeryext.svg
-        :target: https://travis-ci.org/inveniosoftware/flask-celeryext
+.. image:: https://github.com/inveniosoftware/flask-celeryext/workflows/CI/badge.svg
+        :target: https://github.com/inveniosoftware/flask-celeryext/actions
 
 .. image:: https://img.shields.io/coveralls/inveniosoftware/flask-celeryext.svg
         :target: https://coveralls.io/r/inveniosoftware/flask-celeryext
