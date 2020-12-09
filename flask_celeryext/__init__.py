@@ -22,12 +22,12 @@ Initialize the extension like this:
 
     >>> from flask import Flask
     >>> from flask_celeryext import FlaskCeleryExt
-    >>> app = Flask('myapp')
+    >>> app = Flask('testapp')
     >>> ext = FlaskCeleryExt(app)
 
 or alternatively using the factory pattern:
 
-    >>> app = Flask('myapp')
+    >>> app = Flask('testapp')
     >>> app.config.update(dict(
     ...     CELERY_ALWAYS_EAGER=True,
     ...     CELERY_RESULT_BACKEND='cache',
@@ -73,7 +73,7 @@ will be run inside a Flask application context, and thus have access to e.g.
 
     >>> r = apptask.delay()
     >>> r.result
-    'myapp'
+    'testapp'
 
 If you need to run tasks inside a Flask request context, simply change the task
 base class:
@@ -95,7 +95,7 @@ The Celery application is created by a default application factory, which you
 can also use separately:
 
     >>> from flask_celeryext import create_celery_app
-    >>> app = Flask('myapp')
+    >>> app = Flask('testapp')
     >>> celery = create_celery_app(app)
     >>> @celery.task
     ... def appctx():
@@ -111,7 +111,7 @@ extension:
     ...     celery.flask_app = app
     ...     celery.Task = AppContextTask
     ...     return celery
-    >>> app = Flask('myapp')
+    >>> app = Flask('testapp')
     >>> ext = FlaskCeleryExt(app, create_celery_app=make_celery)
 
 
@@ -137,7 +137,7 @@ Testing
 Testing your celery tasks is rather easy. First ensure that you Celery is
 configured to execute tasks eagerly and stores results in local memory:
 
-    >>> app = Flask('myapp')
+    >>> app = Flask('testapp')
     >>> app.config.update(dict(
     ...     CELERY_ALWAYS_EAGER=True,
     ...     CELERY_RESULT_BACKEND='cache',
@@ -148,7 +148,7 @@ configured to execute tasks eagerly and stores results in local memory:
 You can now create your task:
 
     >>> from celery import current_task
-    >>> @celery.task(name='myapp.test_name')
+    >>> @celery.task(name='testapp.test_name')
     ... def test():
     ...     return current_task.name
 
@@ -156,7 +156,7 @@ And finally execute your task:
 
     >>> r = test.delay()
     >>> r.result
-    'myapp.test_name'
+    'testapp.test_name'
 """
 
 from __future__ import absolute_import, print_function, unicode_literals

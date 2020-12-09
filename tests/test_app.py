@@ -49,7 +49,7 @@ def test_config3():
     c = Celery('mycurrent')
     c.set_current()
 
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf)
     celery = create_celery_app(app)
     assert celery
@@ -66,7 +66,7 @@ def test_config4():
     c = Celery('mycurrent')
     c.set_current()
 
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf)
     celery = create_celery_app(app)
     assert celery
@@ -83,7 +83,7 @@ def test_config3_on_4():
     c = Celery('mycurrent')
     c.set_current()
 
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf_v3)
     celery = create_celery_app(app)
     assert celery
@@ -100,7 +100,7 @@ def test_factory():
     c = Celery('mycurrent')
     c.set_current()
 
-    app = Flask("myapp")
+    app = Flask("testapp")
     celery = create_celery_app(app)
     assert celery
     assert celery.flask_app == app
@@ -108,7 +108,7 @@ def test_factory():
 
 def test_appctx_task():
     """Test execution of Celery task with application context."""
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf)
 
     # Set the current Celery application
@@ -122,12 +122,12 @@ def test_appctx_task():
         return current_app.name
 
     r = appctx.delay()
-    assert r.result == "myapp"
+    assert r.result == "testapp"
 
 
 def test_reqctx_task():
     """Test execution of Celery task with request context."""
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf)
     celery = create_celery_app(app)
 
@@ -147,7 +147,7 @@ def test_reqctx_task():
 
 def test_task_logger_propagation():
     """Test log propagation of Celery task."""
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf)
     celery = create_celery_app(app)
     celery.log.setup_task_loggers()
@@ -163,7 +163,7 @@ def test_task_logger_propagation():
 
 
 def test_subtask_and_eager_dont_create_new_app_context(mocker):
-    app = Flask("myapp")
+    app = Flask("testapp")
     app.config.from_object(eager_conf)
     # Set the current Celery application
     c = Celery('mycurrent')
@@ -183,5 +183,5 @@ def test_subtask_and_eager_dont_create_new_app_context(mocker):
         return future.result
 
     r = maintask.delay()
-    assert r.result == "myapp"
+    assert r.result == "testapp"
     assert spy.call_count == 1
