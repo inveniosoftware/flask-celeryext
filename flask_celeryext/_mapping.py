@@ -10,8 +10,6 @@
 
 """Mapping of Invenio Celery to Celery configuration names."""
 
-from __future__ import absolute_import, print_function
-
 INVENIO_TO_CELERY_MAPPING = {
     'CELERY_ACCEPT_CONTENT': 'accept_content',
     'CELERY_ENABLE_UTC': 'enable_utc',

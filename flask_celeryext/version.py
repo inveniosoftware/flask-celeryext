@@ -2,6 +2,7 @@
 #
 # This file is part of Flask-CeleryExt
 # Copyright (C) 2015-2019 CERN.
+# Copyright (C) 2022 Graz University of Technology.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -12,8 +13,6 @@
 This file is imported by ``flask_celeryext.__init__``, and parsed by
 ``setup.py`` as well as ``docs/conf.py``.
 """
-
-from __future__ import absolute_import, print_function
 
 # Do not change the format of this next line. Doing so risks breaking
 # setup.py and docs/conf.py

@@ -11,8 +11,6 @@
 
 """Flask extension for Celery integration."""
 
-from __future__ import absolute_import, print_function
-
 import flask
 from celery import Task
 from celery import current_app as current_celery_app

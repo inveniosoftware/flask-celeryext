@@ -142,8 +142,6 @@ And finally execute your task:
     'testapp.test_name'
 """
 
-from __future__ import absolute_import, print_function, unicode_literals
-
 from .app import AppContextTask, RequestContextTask, create_celery_app
 from .ext import FlaskCeleryExt
 from .version import __version__
