@@ -3,6 +3,7 @@
 # This file is part of Flask-CeleryExt
 # Copyright (C) 2015-2019 CERN.
 # Copyright (C) 2018-2019 infarm - Indoor Urban Farming GmbH.
+# Copyright (C) 2022 Graz University of Technology.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -19,7 +20,7 @@ history = open('CHANGES.rst').read()
 
 tests_require = [
     'pytest-mock>=2.0.0',
-    'pytest-invenio>=1.4.0',
+    'pytest-invenio>=1.4.3',
 ]
 
 extras_require = {
@@ -39,8 +40,7 @@ setup_requires = [
 
 install_requires = [
     'Flask>=0.10',
-    'celery>=3.1;python_version<"3.7"',
-    'celery>=4.3;python_version>="3.7"',
+    'celery>=5.1.0;python_version>="3.7"',
 ]
 
 packages = find_packages()
@@ -81,7 +81,6 @@ setup(
         'Topic :: Software Development :: Object Brokering',
         'Topic :: System :: Distributed Computing',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Development Status :: 5 - Production/Stable',

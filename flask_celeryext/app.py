@@ -3,6 +3,7 @@
 # This file is part of Flask-CeleryExt
 # Copyright (C) 2015-2019 CERN.
 # Copyright (C) 2018-2019 infarm - Indoor Urban Farming GmbH.
+# Copyright (C) 2022 Graz University of Technology.
 #
 # Flask-CeleryExt is free software; you can redistribute it and/or modify it
 # under the terms of the Revised BSD License; see LICENSE file for more
@@ -12,30 +13,20 @@
 
 from __future__ import absolute_import, print_function
 
-import warnings
-from distutils.version import LooseVersion
-
 import flask
 from celery import Task
-from celery import __version__ as celery_version
 from celery import current_app as current_celery_app
 from celery import signals
 
-from ._mapping import V3TOV4MAPPING
-
-CELERY_4_OR_GREATER = LooseVersion(celery_version) >= LooseVersion('4.0')
+from ._mapping import INVENIO_TO_CELERY_MAPPING
 
 
-def v3tov4config(config, mapping):
-    """Translate Celery v3 configuration to v4."""
-    for new, old in mapping.items():
-        if new not in config and old in config:
-            warnings.warn(
-                'Celery v4 installed, but detected Celery v3 '
-                'configuration %s (use %s instead).' % (old, new),
-                UserWarning
-            )
-            config[new] = config[old]
+def map_invenio_to_celery(config, mapping):
+    """Translate Invenio Celery configuration to Celery Configuration."""
+    def map_key(key):
+        return mapping[key] if key in mapping else key
+
+    return {map_key(key): value for key, value in config.items()}
 
 
 def setup_task_logger(logger=None, **kwargs):
@@ -50,14 +41,8 @@ def create_celery_app(flask_app):
     """Create a Celery application."""
     celery = current_celery_app
 
-    if CELERY_4_OR_GREATER:
-        v3tov4config(flask_app.config, V3TOV4MAPPING)
-        celery.config_from_object(
-            flask_app.config,
-            namespace='CELERY'
-        )  # pragma: no cover
-    else:
-        celery.config_from_object(flask_app.config)  # pragma: no cover
+    config = map_invenio_to_celery(flask_app.config, INVENIO_TO_CELERY_MAPPING)
+    celery.config_from_object(config)
 
     celery.Task = AppContextTask
 
