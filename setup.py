@@ -21,6 +21,8 @@ history = open('CHANGES.rst').read()
 tests_require = [
     'pytest-mock>=2.0.0',
     'pytest-invenio>=1.4.3',
+    'redis>=4.1.4',
+    'msgpack-python>=0.5.6',
 ]
 
 extras_require = {
