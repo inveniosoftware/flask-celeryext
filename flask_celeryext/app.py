@@ -16,7 +16,7 @@ from celery import Task
 from celery import current_app as current_celery_app
 from celery import signals
 
-from ._mapping import INVENIO_TO_CELERY_MAPPING
+from ._mapping import FLASK_TO_CELERY_MAPPING
 
 
 def map_invenio_to_celery(config, mapping):
@@ -39,7 +39,7 @@ def create_celery_app(flask_app):
     """Create a Celery application."""
     celery = current_celery_app
 
-    config = map_invenio_to_celery(flask_app.config, INVENIO_TO_CELERY_MAPPING)
+    config = map_invenio_to_celery(flask_app.config, FLASK_TO_CELERY_MAPPING)
     celery.config_from_object(config)
 
     celery.Task = AppContextTask

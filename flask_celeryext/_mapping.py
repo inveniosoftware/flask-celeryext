@@ -10,7 +10,7 @@
 
 """Mapping of Invenio Celery to Celery configuration names."""
 
-INVENIO_TO_CELERY_MAPPING = {
+FLASK_TO_CELERY_MAPPING = {
     'CELERY_ACCEPT_CONTENT': 'accept_content',
     'CELERY_ENABLE_UTC': 'enable_utc',
     'CELERY_IMPORTS': 'imports',
@@ -72,7 +72,7 @@ INVENIO_TO_CELERY_MAPPING = {
     'CELERY_RESULT_SERIALIZER': 'result_serializer',
     'CELERY_RESULT_DBURI': 'Use result_backend instead.',
     'CELERY_RESULT_ENGINE_OPTIONS': 'database_engine_options',
-    '[...]_DB_SHORT_LIVED_SESSIONS': 'database_short_lived_sessions',
+    'CELERY_RESULT_DB_SHORT_LIVED_SESSIONS': 'database_short_lived_sessions',
     'CELERY_RESULT_DB_TABLE_NAMES': 'database_db_names',
     'CELERY_SECURITY_CERTIFICATE': 'security_certificate',
     'CELERY_SECURITY_CERT_STORE': 'security_cert_store',

@@ -18,7 +18,7 @@ from flask import Flask, current_app, request
 
 from flask_celeryext import AppContextTask, RequestContextTask, \
     create_celery_app
-from flask_celeryext._mapping import INVENIO_TO_CELERY_MAPPING
+from flask_celeryext._mapping import FLASK_TO_CELERY_MAPPING
 from flask_celeryext.app import map_invenio_to_celery
 
 
@@ -45,7 +45,7 @@ def test_mapping():
         'CELERY_TASK_SERIALIZER': 'msgpack'
     }
 
-    mapped = map_invenio_to_celery(config, INVENIO_TO_CELERY_MAPPING)
+    mapped = map_invenio_to_celery(config, FLASK_TO_CELERY_MAPPING)
     assert mapped['broker_url'] == 'redis://localhost:6379/0'
     assert mapped['result_backend'] == 'redis://localhost:6379/1'
     assert mapped['accept_content'] == ['json', 'msgpack', 'yaml']
