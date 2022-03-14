@@ -19,15 +19,23 @@ readme = open('README.rst').read()
 history = open('CHANGES.rst').read()
 
 tests_require = [
-    'pytest-mock>=2.0.0',
-    'pytest-invenio>=1.4.3',
-    'redis>=4.1.4',
+    'check-manifest>=0.42',
+    'coverage>=5.3,<6',
+    'docker-services-cli>=0.4.0',
     'msgpack-python>=0.5.6',
+    'pytest-cov>=3.0.0',
+    'pytest-flask>=1.2.0',
+    'pytest-isort>=3.0.0',
+    'pytest-mock>=2.0.0',
+    'pytest-pycodestyle>=2.2.0',
+    'pytest-pydocstyle>=2.2.0',
+    'pytest>=6,<7',
+    'redis>=4.1.4',
 ]
 
 extras_require = {
     'docs': [
-        'Sphinx>=3',
+        'Sphinx>=4.2.0',
     ],
     'tests': tests_require,
 }
@@ -36,13 +44,9 @@ extras_require['all'] = []
 for reqs in extras_require.values():
     extras_require['all'].extend(reqs)
 
-setup_requires = [
-    'pytest-runner>=2.6.2',
-]
-
 install_requires = [
-    'Flask>=0.10',
-    'celery>=5.1.0;python_version>="3.7"',
+    'Flask>=1.1',
+    'celery>=5.1.0',
 ]
 
 packages = find_packages()
@@ -70,7 +74,6 @@ setup(
     platforms='any',
     extras_require=extras_require,
     install_requires=install_requires,
-    setup_requires=setup_requires,
     tests_require=tests_require,
     classifiers=[
         'Environment :: Web Environment',
