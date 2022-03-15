@@ -7,11 +7,11 @@
 # under the terms of the Revised BSD License; see LICENSE file for more
 # details.
 
-from __future__ import print_function
-
 import os
 
 import sphinx.environment
+
+from flask_celeryext import __version__
 
 # -- General configuration ------------------------------------------------
 
@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Flask-CeleryExt'
-copyright = u'2016, CERN'
+copyright = u'2016-2022, CERN'
 author = u'CERN'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -58,10 +58,7 @@ author = u'CERN'
 # The short X.Y version.
 
 # Get the version string. Cannot be done with import!
-g = {}
-with open(os.path.join('..', 'flask_celeryext', 'version.py'), 'rt') as fp:
-    exec(fp.read(), g)
-    version = g['__version__']
+version = __version__
 
 # The full version, including alpha/beta/rc tags.
 release = version
