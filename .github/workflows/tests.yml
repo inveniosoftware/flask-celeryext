@@ -44,7 +44,7 @@ jobs:
       - name: Generate dependencies
         run: |
           python -m pip install --upgrade pip setuptools py wheel requirements-builder
-          requirements-builder -e all --level=${{ matrix.requirements-level }} setup.py > .${{ matrix.requirements-level }}-${{ matrix.python-version }}-requirements.txt
+          requirements-builder -e tests --level=${{ matrix.requirements-level }} setup.py > .${{ matrix.requirements-level }}-${{ matrix.python-version }}-requirements.txt
 
       - name: Cache pip
         uses: actions/cache@v2
@@ -55,7 +55,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r .${{ matrix.requirements-level }}-${{ matrix.python-version }}-requirements.txt
-          pip install .[all]
+          pip install .[tests]
           pip freeze
 
       - name: Run tests
