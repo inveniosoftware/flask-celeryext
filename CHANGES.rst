@@ -4,7 +4,7 @@ Changes
 Version 0.4.0 (released 2022-03-15)
 
 - Adds support for Python 3.9.
-- Adds support for new Celery config variable naming.
+- Adds support for new Celery configuration variable naming.
 - Drops support for Python 2.7 and 3.6 due to end of life.
 - Drops support for Celery 3 and 4.
 
