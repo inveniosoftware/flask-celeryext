@@ -30,10 +30,10 @@ or alternatively using the factory pattern:
 
     >>> app = Flask('testapp')
     >>> app.config.update(dict(
-    ...     CELERY_ALWAYS_EAGER=True,
+    ...     CELERY_TASK_ALWAYS_EAGER=True,
     ...     CELERY_RESULT_BACKEND='cache',
     ...     CELERY_CACHE_BACKEND='memory',
-    ...     CELERY_EAGER_PROPAGATES=True))
+    ...     CELERY_TASK_EAGER_PROPAGATES=True))
     >>> ext = FlaskCeleryExt()
     >>> ext.init_app(app)
 
@@ -122,10 +122,10 @@ configured to execute tasks eagerly and stores results in local memory:
 
     >>> app = Flask('testapp')
     >>> app.config.update(dict(
-    ...     CELERY_ALWAYS_EAGER=True,
+    ...     CELERY_TASK_ALWAYS_EAGER=True,
     ...     CELERY_RESULT_BACKEND='cache',
     ...     CELERY_CACHE_BACKEND='memory',
-    ...     CELERY_EAGER_PROPAGATES=True))
+    ...     CELERY_TASK_EAGER_PROPAGATES=True))
     >>> celery = create_celery_app(app)
 
 You can now create your task:
