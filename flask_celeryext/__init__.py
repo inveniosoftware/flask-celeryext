@@ -145,7 +145,7 @@ And finally execute your task:
 from .app import AppContextTask, RequestContextTask, create_celery_app
 from .ext import FlaskCeleryExt
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 __all__ = (
     '__version__', 'AppContextTask', 'RequestContextTask', 'create_celery_app',

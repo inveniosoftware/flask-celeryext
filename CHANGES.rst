@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version 0.4.1 (released 2022-03-17)
+
+- Fixes celery mapping fo the configuration.
+
 Version 0.4.0 (released 2022-03-15)
 
 - Adds support for Python 3.9.
