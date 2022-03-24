@@ -125,4 +125,5 @@ FLASK_TO_CELERY_MAPPING = {
     'ACKS_ON_FAILURE_OR_TIMEOUT': 'task_acks_on_failure_or_timeout',
     'COMPRESSION': 'task_compression',
     'TASK_REJECT_ON_WORKER_LOST': 'task_reject_on_worker_lost',
+    'BROKER_URL': 'broker_url',
 }
