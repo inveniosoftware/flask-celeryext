@@ -26,7 +26,7 @@ class FlaskCeleryExt(object):
     def init_app(self, app):
         """Initialize a Flask application."""
         # Follow the Flask guidelines on usage of app.extensions
-        if not hasattr(app, 'extensions'):
+        if not hasattr(app, "extensions"):
             app.extensions = {}  # pragma: no cover
-        app.extensions['flask-celeryext'] = self
+        app.extensions["flask-celeryext"] = self
         self.celery = self.create_celery_app(app)

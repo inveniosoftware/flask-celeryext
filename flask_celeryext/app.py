@@ -21,6 +21,7 @@ from ._mapping import FLASK_TO_CELERY_MAPPING
 
 def map_invenio_to_celery(config, mapping):
     """Translate Invenio Celery configuration to Celery Configuration."""
+
     def map_key(key):
         return mapping[key] if key in mapping else key
 
@@ -45,7 +46,7 @@ def create_celery_app(flask_app):
     celery.Task = AppContextTask
 
     # Set Flask application object on the Celery application.
-    if not hasattr(celery, 'flask_app'):
+    if not hasattr(celery, "flask_app"):
         celery.flask_app = flask_app
 
     signals.after_setup_task_logger.connect(setup_task_logger)
@@ -85,6 +86,5 @@ class RequestContextTask(Task):
             self.app.flask_app.try_trigger_before_first_request_functions()
             self.app.flask_app.preprocess_request()
             res = Task.__call__(self, *args, **kwargs)
-            self.app.flask_app.process_response(
-                self.app.flask_app.response_class())
+            self.app.flask_app.process_response(self.app.flask_app.response_class())
             return res
