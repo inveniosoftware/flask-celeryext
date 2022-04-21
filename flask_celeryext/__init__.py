@@ -148,6 +148,9 @@ from .ext import FlaskCeleryExt
 __version__ = "0.4.1"
 
 __all__ = (
-    '__version__', 'AppContextTask', 'RequestContextTask', 'create_celery_app',
-    'FlaskCeleryExt',
+    "__version__",
+    "AppContextTask",
+    "RequestContextTask",
+    "create_celery_app",
+    "FlaskCeleryExt",
 )
