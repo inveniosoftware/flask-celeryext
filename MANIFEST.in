@@ -22,3 +22,4 @@ include *.txt
 include *.yml
 include Dockerfile
 recursive-include .github/workflows *.yml
+include .git-blame-ignore-revs
