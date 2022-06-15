@@ -1,6 +1,10 @@
 Changes
 =======
 
+Version v0.4.3 (release 2022-06-15)
+
+- housekeeping: misaligned tag vs version fix
+
 Version v0.4.2 (release 2022-06-15)
 
 - add two missing mappings
