@@ -12,6 +12,7 @@
 
 FLASK_TO_CELERY_MAPPING = {
     "CELERY_ACCEPT_CONTENT": "accept_content",
+    "CELERY_ALWAYS_EAGER": "task_always_eager",
     "CELERY_BEAT_MAX_LOOP_INTERVAL": "beat_max_loop_interval",
     "CELERY_BEAT_SCHEDULE": "beat_schedule",
     "CELERY_BEAT_SCHEDULER": "beat_scheduler",
@@ -41,6 +42,7 @@ FLASK_TO_CELERY_MAPPING = {
     "CELERY_DATABASE_DB_NAMES": "database_db_names",
     "CELERY_DATABASE_ENGINE_OPTIONS": "database_engine_options",
     "CELERY_DATABASE_SHORT_LIVED_SESSIONS": "database_short_lived_sessions",
+    "CELERY_EAGER_PROPAGATES_EXCEPTIONS": "task_eager_propagates",
     "CELERY_ENABLE_UTC": "enable_utc",
     "CELERY_EVENT_QUEUE_EXPIRES": "event_queue_expires",
     "CELERY_EVENT_QUEUE_PREFIX": "event_queue_prefix",
