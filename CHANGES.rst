@@ -1,6 +1,15 @@
 Changes
 =======
 
+Version v0.4.2 (release 2022-06-15)
+
+- add two missing mappings
+- global: fix revision id due to rebase
+- add .git-blame-ignore-revs
+- migrate to use black as opinionated auto formater
+- bugfix BROKER_URL not in the mapping
+
+
 Version 0.4.1 (released 2022-03-17)
 
 - Fixes celery mapping fo the configuration.
