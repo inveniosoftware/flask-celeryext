@@ -19,8 +19,6 @@ function cleanup {
 }
 trap cleanup EXIT
 
-python -m check_manifest --ignore ".*-requirements.txt"
+python -m check_manifest
 eval "$(docker-services-cli up --mq ${CACHE:-redis} --env)"
 python -m pytest $@
-tests_exit_code=$?
-exit "$tests_exit_code"
