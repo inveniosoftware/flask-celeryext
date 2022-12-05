@@ -83,7 +83,6 @@ class RequestContextTask(Task):
     def __call__(self, *args, **kwargs):
         """Execute task."""
         with self.app.flask_app.test_request_context():
-            self.app.flask_app.try_trigger_before_first_request_functions()
             self.app.flask_app.preprocess_request()
             res = Task.__call__(self, *args, **kwargs)
             self.app.flask_app.process_response(self.app.flask_app.response_class())
