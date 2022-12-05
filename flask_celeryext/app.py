@@ -11,10 +11,10 @@
 
 """Flask extension for Celery integration."""
 
-import flask
 from celery import Task
 from celery import current_app as current_celery_app
 from celery import signals
+from flask import has_app_context
 
 from ._mapping import FLASK_TO_CELERY_MAPPING
 
@@ -65,7 +65,7 @@ class AppContextTask(Task):
     def __call__(self, *args, **kwargs):
         """Execute task."""
         # If an "app_context" has already been loaded, just pass through
-        if flask._app_ctx_stack.top is not None:
+        if has_app_context():
             return Task.__call__(self, *args, **kwargs)
         with self.app.flask_app.app_context():
             return Task.__call__(self, *args, **kwargs)
