@@ -1,6 +1,13 @@
 Changes
 =======
 
+Version v0.5.0 (release 2023-01-23)
+
+- remove `flask._app_ctx_stack.top` due to deprecation
+- breaking change: remove `flask_app.try_trigger_before_first_request_functions()`
+  due to deprecation (impacts usage of `RequestContextTask`)
+
+
 Version v0.4.3 (release 2022-06-15)
 
 - housekeeping: misaligned tag vs version fix
