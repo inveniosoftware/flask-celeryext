@@ -1,9 +1,5 @@
-# This file is part of Flask-CeleryExt
-# Copyright (C) 2015, 2016 CERN.
-#
-# Flask-CeleryExt is free software; you can redistribute it and/or modify it
-# under the terms of the Revised BSD License; see LICENSE file for more
-# details.
+# SPDX-FileCopyrightText: 2015, 2016 CERN.
+# SPDX-License-Identifier: BSD-3-Clause
 
 # Use Python-2.7:
 FROM python:2.7
