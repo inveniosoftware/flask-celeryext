@@ -1,8 +1,0 @@
-# SPDX-FileCopyrightText: 2015 CERN.
-# SPDX-License-Identifier: BSD-3-Clause
-
-web:
-  build: .
-  command: python setup.py test
-  volumes:
-   - .:/code
