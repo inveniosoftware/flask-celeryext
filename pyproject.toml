@@ -1,3 +1,73 @@
+# SPDX-FileCopyrightText: 2015-2019 CERN.
+# SPDX-FileCopyrightText: 2015-2022 CERN.
+# SPDX-FileCopyrightText: 2018-2019 infarm - Indoor Urban Farming GmbH.
+# SPDX-FileCopyrightText: 2022 Graz University of Technology.
+# SPDX-FileCopyrightText: 2026 TU Wien.
+# SPDX-License-Identifier: MIT
+
+[project]
+name = "Flask-CeleryExt"
+description = "Flask-CeleryExt is a simple integration layer between Celery and Flask."
+readme = "README.rst"
+requires-python = ">=3.7"
+license = "BSD-3-Clause"
+authors = [
+  { name = "CERN", email = "info@inveniosoftware.org" },
+]
+keywords = [
+  "celery",
+  "flask",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+]
+dependencies = [
+  "celery>=5.1.0",
+  "flask>=2.2.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/inveniosoftware/flask-celeryext"
+
+[project.optional-dependencies]
+tests = [
+  "check-manifest>=0.42",
+  "coverage>=5.3,<6",
+  "docker-services-cli>=0.4.0",
+  "importlib-metadata<5; python_version<\"3.8\"",
+  "msgpack-python>=0.5.6",
+  "pytest-black>=0.3.12",
+  "pytest-cov>=3.0.0",
+  "pytest-flask>=1.2.0",
+  "pytest-isort>=3.0.0",
+  "pytest-mock>=2.0.0",
+  "pytest-pydocstyle>=2.2.0",
+  "pytest>=6,<9",
+  "redis>=4.1.4",
+  "sphinx>=4.2.0",
+]
+
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "flask_celeryext/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/flask_celeryext",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.pydocstyle]
+add_ignore = ""
+
+[tool.pytest.ini_options]
+addopts = '--black --isort --pydocstyle --doctest-glob="*.rst" --doctest-modules --cov=flask_celeryext --cov-report=term-missing'
+filterwarnings = ["ignore::pytest.PytestDeprecationWarning"]
+testpaths = "tests flask_celeryext"
+live_server_scope = "module"

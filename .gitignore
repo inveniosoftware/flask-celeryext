@@ -57,3 +57,4 @@ target/
 
 # Idea software family
 .idea/
+uv.lock
