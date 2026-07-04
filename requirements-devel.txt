@@ -1,2 +1,0 @@
--e git+https://github.com/mitsuhiko/flask.git#egg=Flask
--e git+https://github.com/mitsuhiko/celery.git#egg=celery
