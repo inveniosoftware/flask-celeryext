@@ -1,6 +1,13 @@
 Changes
 =======
 
+Version v0.5.1 (released 2026-07-16)
+
+- chore(setup): migrate from setuptools to hatchling
+- chore(workflows): use centralized GitHub actions
+- chore(cleanup): remove outdated and unnecessary files
+- chore(licenses): update license headers to use SPDX
+
 Version v0.5.0 (release 2023-01-23)
 
 - remove `flask._app_ctx_stack.top` due to deprecation
