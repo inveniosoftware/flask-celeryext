@@ -9,7 +9,7 @@
 name = "Flask-CeleryExt"
 description = "Flask-CeleryExt is a simple integration layer between Celery and Flask."
 readme = "README.rst"
-requires-python = ">=3.7"
+requires-python = ">=3.11"
 license = "BSD-3-Clause"
 authors = [
   { name = "CERN", email = "info@inveniosoftware.org" },
